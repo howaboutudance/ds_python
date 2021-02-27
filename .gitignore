@@ -1,8 +1,9 @@
 venv*
 *.egg-info
 .tox
-__pycache__
 .pytest_cache
 .mypy_cache
+.vscode
+__pycache__
 dist
 build
