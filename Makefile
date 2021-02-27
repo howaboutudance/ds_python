@@ -1,8 +1,9 @@
-SAMPLE_TAG = sks/pytemplate-docker
-SAMPLE_INTERACT = sks/pytemplate-interact
-SAMPLE_TEST = sks/pytemplate-test
-DOCKER_BUILD=docker build ./ -f Dockerfile.sample
-DOCKER_RUN=docker run
+CONT_EXEC := $(if $(shell command -v "podman"), podman, docker)
+SAMPLE_TAG = hematite/data-structs-app
+SAMPLE_INTERACT = hematite/data-structs-interact
+SAMPLE_TEST = hematite/data-structs-test
+DOCKER_BUILD=${CONT_EXEC} build ./ -f Dockerfile
+DOCKER_RUN=${CONT_EXEC} run
 
 build: FORCE
 	${DOCKER_BUILD} --no-cache=true --target=app -t ${SAMPLE_TAG}
